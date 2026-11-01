@@ -33,25 +33,24 @@ assert.equal(res.statusCode, 403);
 assert.equal(nextCalled, false);
 });
 
-test('authorize allows users with an allowed role', () => {
-    const req = { user: { role: 'admin' } };
-    const res = {
-        status(code) {
-            this.statusCode = code;
+test("authorize allows admin users with an allowed role",()=>{
+    const req={user:{role:'admin'}};
+    const res={
+        status(code)
+        {
+            this.status=code;
             return this;
         },
-        json(payload) {
-            this.payload = payload;
+        json(payload)
+        {
+            this.payload=payload;
             return this;
         }
     };
-    let nextCalled = false;
 
-    authorize('admin')(req, res, () => {
-        nextCalled = true;
-    });
-
-    assert.equal(nextCalled, true);
+    let nextCalled=false;
+    authorize('admin')(req,res,()=>{nextCalled=true});
+    assert.equal(nextCalled,true);
 });
 
 test('authenticate rejects a request without a bearer token',()=>{
@@ -69,7 +68,7 @@ test('authenticate rejects a request without a bearer token',()=>{
         }
     };
     let nextCalled=false;
-    autheticate(req,res,()=>{
+    authenticate(req,res,()=>{
         nextCalled=true;
     });
     assert.equal(res.statusCode,401);

@@ -43,7 +43,6 @@ app.use(errorHandler);
 const startServer = async () => {
     try {
         await db.pool.connect();
-        await db.createTables();
         
         console.log("Connected to PostgreSQL successfully");
 

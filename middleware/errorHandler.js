@@ -10,3 +10,5 @@ const errorHandler=(error,req,res,next)=>{
         message:"internal server error"
     });
 };
+
+module.exports = errorHandler;
