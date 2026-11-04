@@ -30,6 +30,11 @@ const loanmodeles={
         const result=await pool.query(query,values);
         return result.rows[0];
     },
+    returnloans:async(id,userId)=>{
+        const result=await pool.query("update loans set returned_at = current_timestamp where id=$1 and user_id=$2 and returned_at is null returning *;",[id,userId]);
+        return result.rows[0];
+    },
+    
     deleteLoans:async(id,userId)=>{
         const result=await pool.query(`delete from loans where id=$1 and user_id=$2 RETURNING *;`,[id,userId]);
         return result.rows[0];

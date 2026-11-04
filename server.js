@@ -36,6 +36,7 @@ app.get("/loans", authenticate, loanController.getAllLoans);
 app.get("/loans/:id", authenticate, loanController.getloanByid);
 app.post("/loans", authenticate, loanController.createLoans);
 app.put("/loans/:id", authenticate, loanController.updateLoans);
+app.put("/loans/:id/return",authenticate,loanController.returnloans);
 app.delete("/loans/:id", authenticate, loanController.deleteloan);
 
 app.use(errorHandler);
