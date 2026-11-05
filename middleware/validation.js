@@ -1,5 +1,5 @@
 const isNonEmptyString=(value)=>{
-    typeof(value)==="string" && value.trim().length >0;
+  return  typeof(value)==="string" && value.trim().length >0;
 }
 
 const validateUser=(req,res,next)=>{
@@ -24,7 +24,7 @@ const validateUser=(req,res,next)=>{
 };
 
 const validateBook=(req,res,next)=>{
-    const {title,author,published_year}= req.body || {};
+    const {title,author,published_year}= req.body;
     if(!isNonEmptyString(title) || !isNonEmptyString(author))
     {
         return res.status(400).json({
