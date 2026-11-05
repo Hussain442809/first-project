@@ -29,6 +29,11 @@ const loanService = {
         return await loanModel.updateLoans(id, userId, data);
     },
 
+    returnloans:async(id,userId) =>{
+        if(!id) throw new Error("loan id is required");
+        return loanModel.returnloans(id,userId);
+    },
+
     deleteLoan: async (id, userId) => {
         if (!id) throw new Error("loan id is required");
         return await loanModel.deleteLoans(id, userId);

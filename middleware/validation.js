@@ -1,5 +1,9 @@
 const isNonEmptyString=(value)=>{
+<<<<<<< HEAD
   return  typeof(value)==="string" && value.trim().length >0;
+=======
+  return   typeof(value)==="string" && value.trim().length >0;
+>>>>>>> a91801da5e60d1c922294513f90176b071793e2a
 }
 
 const validateUser=(req,res,next)=>{
@@ -33,13 +37,17 @@ const validateBook=(req,res,next)=>{
         });
     }
 
-    if(!Number.isInteger(Number(published_year)))
+ const hasIntegerPublishedYear =
+        (typeof published_year === "number" ||
+            (typeof published_year === "string" && published_year.trim() !== "")) &&
+        Number.isInteger(Number(published_year));
+
+    if(!hasIntegerPublishedYear)
     {return res.status(400).json({
         success:false,
         message:"published year must be integer"
     });
-}
-
+    }
 next();
 };
 
