@@ -1,4 +1,4 @@
-const { userService } = require("../business/userService");
+const {userService} = require("../business/userService");
 
 const authController = {
     register:async(req,res)=>{
