@@ -1,10 +1,6 @@
 const isNonEmptyString=(value)=>{
-<<<<<<< HEAD
   return  typeof(value)==="string" && value.trim().length >0;
-=======
-  return   typeof(value)==="string" && value.trim().length >0;
->>>>>>> a91801da5e60d1c922294513f90176b071793e2a
-}
+};
 
 const validateUser=(req,res,next)=>{
     const {name , email}= req.body || {};
