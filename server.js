@@ -5,7 +5,7 @@ const userController = require("./controllers/userController");
 const authController = require("./controllers/authController");
 const { bookController } = require("./controllers/bookcontroller");
 const loanController = require("./controllers/loancontroller");
-const { authenticate } = require("./middleware/auth");
+const { authenticate , authorize} = require("./middleware/auth");
 const { validateUser, validateBook, validateId } = require("./middleware/validation");
 const errorHandler = require("./middleware/errorHandler");
 
@@ -26,11 +26,12 @@ app.post("/users", validateUser, userController.createUser);
 app.put("/users/:id", validateId, userController.updateUser);
 app.delete("/users/:id", validateId, userController.deleteUser);
 
-app.get("/books", bookController.getAllbooks);
-app.get("/books/:id", validateId, bookController.getbookbyid);
-app.post("/books", validateBook, bookController.createBook);
-app.put("/books/:id", validateId, bookController.updateBook);
-app.delete("/books/:id", validateId, bookController.deletebook);
+app.get("/books", bookController.getAllbooks);  //public 
+app.get("/books/:id", validateId, bookController.getbookbyid);  //public
+
+app.post("/books",authenticate,authorize("admin"), validateBook, bookController.createBook);
+app.put("/books/:id",authenticate,authorize("admin"), validateId, bookController.updateBook);
+app.delete("/books/:id",authenticate,authorize("admin"), validateId, bookController.deletebook);
 
 app.get("/loans", authenticate, loanController.getAllLoans);
 app.get("/loans/:id", authenticate, loanController.getloanByid);
