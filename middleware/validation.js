@@ -4,7 +4,6 @@ const isNonEmptyString=(value)=>{
 }
 =======
 };
->>>>>>> 68f73867e5e785fe20008bfb69713ec0dd5abe8b
 
 const validateUser=(req,res,next)=>{
     const {name , email}= req.body || {};
