@@ -1,8 +1,5 @@
 const isNonEmptyString=(value)=>{
-  return  typeof(value)==="string" && value.trim().length >0;
-<<<<<<< HEAD
-}
-=======
+    return  typeof(value)==="string" && value.trim().length >0;
 };
 
 const validateUser=(req,res,next)=>{

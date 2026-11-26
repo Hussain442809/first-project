@@ -3,7 +3,7 @@ const { pool } = require("../config/dp");
 const userModel = {
     getAllUsers: async () => {
         const result = await pool.query(`
-            SELECT id, name, email FROM users ORDER BY id ASC
+            SELECT id, name, email, role FROM users ORDER BY id ASC
         `);
         return result.rows;
     },

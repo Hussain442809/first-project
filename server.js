@@ -20,6 +20,7 @@ app.post("/auth/register", authController.register);
 app.post("/auth/login", authController.login);
 
 app.get("/", userController.getWelcome);
+app.use("/users", authenticate, authorize("admin"));
 app.get("/users", userController.getUsers);
 app.get("/users/:id", validateId, userController.getUserById);
 app.post("/users", validateUser, userController.createUser);

@@ -73,6 +73,12 @@ const userController = {
     },
 
     deleteUser: async (req, res) => {
+        if (String(req.params.id) === String(req.user.userId)) {
+            return res.status(403).json({
+                message: "you cannot delete your own account"
+            });
+        }
+
         try {
             const { id } = req.params;
             const deletedUser = await userService.deleteUser(id);
